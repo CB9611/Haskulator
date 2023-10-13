@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Description from "./components/Description/Description.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="haskulator-container">
+      <h1 className="title-header">Haskulator</h1>
+      <div className="description">
+        <Description />
+      </div>
+      <div className="body-container">
+        <body className="body-content">
+          <h3 className="options-header">Please select an option:</h3>
+          <form>
+            <select>
+              <option type="radio">Example1</option>
+              <option type="radio">Example2</option>
+              <option type="radio">Example3</option>
+              <option type="radio">Example4</option>
+              <option type="radio">Example5</option>
+            </select>
+            <input type="submit" value="Submit" />
+          </form>
+        </body>
+      </div>
     </div>
   );
 }
