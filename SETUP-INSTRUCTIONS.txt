@@ -1,4 +1,0 @@
-# Install Stack (if not already installed)
-curl -sSL https://get.haskellstack.org/ | sh
-
-(More will be added as the project expands)
