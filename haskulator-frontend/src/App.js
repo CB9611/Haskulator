@@ -4,24 +4,25 @@ import Description from "./components/Description/Description.js";
 function App() {
   return (
     <div className="haskulator-container">
-      <h1 className="title-header">Haskulator</h1>
+      <h1 className="title-header"> Haskulator </h1>
       <div className="description">
         <Description />
       </div>
       <div className="body-container">
-        <body className="body-content">
-          <h3 className="options-header">Please select an option:</h3>
+        <div className="body-content">
+          <h3 className="options-header">🔮 Please select an option:</h3>
           <form>
-            <select>
-              <option type="radio">Example1</option>
-              <option type="radio">Example2</option>
-              <option type="radio">Example3</option>
-              <option type="radio">Example4</option>
-              <option type="radio">Example5</option>
+            <label htmlFor="options">Choose an option:</label>
+            <select id="options" className="select-options">
+              <option value="example1">Example 1</option>
+              <option value="example2">Example 2</option>
+              <option value="example3">Example 3</option>
+              <option value="example4">Example 4</option>
+              <option value="example5">Example 5</option>
             </select>
-            <input type="submit" value="Submit" />
+            <button type="submit" className="submit-button">Submit 🚀</button>
           </form>
-        </body>
+        </div>
       </div>
     </div>
   );

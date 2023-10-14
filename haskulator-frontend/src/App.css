@@ -1,24 +1,60 @@
 .haskulator-container {
   text-align: center;
+  background: linear-gradient(to bottom, #74D2E7, #8B49E6);
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-header {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px #333;
+  margin: 20px 0;
 }
 
 .description {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 20px 0;
+  color: #555;
 }
 
 .body-container {
-  background-color: lightgrey;
-  border: solid black 3px;
-  border-radius: 15px;
-  padding: 15px;
-  min-width: 50%;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #fff;
+  border: 2px solid #8B49E6;
+  border-radius: 10px;
+  padding: 20px;
+  width: 60%;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.body-content {
-  background-color: lightgrey;
-  margin: 15px;
+.options-header {
+  font-size: 1.5rem;
+  color: #8B49E6;
+}
+
+.select-options {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #8B49E6;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #6A27C2;
 }
