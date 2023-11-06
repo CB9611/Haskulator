@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haskulator: Displacement</title>
+</head>
+<body>
+    <h1>Haskulator: Displacement</h1>
+    
+    <form id="displacementForm">
+        <label for="initialPosition">Initial Position:</label>
+        <input type="number" id="initialPosition" step="0.01" required><br>
+
+        <label for="finalPosition">Final Position:</label>
+        <input type="number" id="finalPosition" step="0.01" required><br>
+
+        <label for="time">Time:</label>
+        <input type="number" id="time" step="0.01" required><br>
+
+        <button type="button" onclick="calculateDisplacement()">Calculate Displacement</button>
+    </form>
+
+    <p id="displacementResult"></p>
+
+    <script>
+        function calculateDisplacement() {
+            const initialPosition = parseFloat(document.getElementById('initialPosition').value);
+            const finalPosition = parseFloat(document.getElementById('finalPosition').value);
+            const time = parseFloat(document.getElementById('time').value);
+
+            if (!isNaN(initialPosition) && !isNaN(finalPosition) && !isNaN(time)) {
+                const displacement = finalPosition - initialPosition;
+                document.getElementById('displacementResult').textContent = `Displacement: ${displacement} units`;
+            } else {
+                document.getElementById('displacementResult').textContent = 'Please enter valid numeric values.';
+            }
+        }
+    </script>
+</body>
+</html>

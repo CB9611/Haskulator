@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haskulator: Velocity</title>
+</head>
+<body>
+    <h1>Haskulator: Velocity</h1>
+
+    <label for="initialVelocity">Initial Velocity (m/s):</label>
+    <input type="number" id="initialVelocity">
+
+    <label for="acceleration">Acceleration (m/s²):</label>
+    <input type="number" id="acceleration">
+
+    <label for="time">Time (s):</label>
+    <input type="number" id="time">
+
+    <button onclick="calculateVelocity()">Calculate Velocity</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateVelocity() {
+            const initialVelocity = parseFloat(document.getElementById("initialVelocity").value);
+            const acceleration = parseFloat(document.getElementById("acceleration").value);
+            const time = parseFloat(document.getElementById("time").value);
+
+            const velocity = initialVelocity + (acceleration * time);
+
+            if (!isNaN(velocity)) {
+                document.getElementById("result").innerHTML = `Velocity: ${velocity.toFixed(2)} m/s`;
+            } else {
+                document.getElementById("result").innerHTML = "Please provide valid input values.";
+            }
+        }
+    </script>
+</body>
+</html>

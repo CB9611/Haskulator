@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haskulator</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Haskulator</h1>
+    <h3>Please choose a calculation:</h3>
+    <div id="optionsDiv">
+        <input type="radio"name="showHide" id="showAcceleration" onclick="showDiv('accelerationDiv')">Acceleration
+        <input type="radio"name="showHide" id="showDisplacement" onclick="showDiv('displacementDiv')">Displacement
+        <input type="radio"name="showHide" id="showMomentum" onclick="showDiv('momentumDiv')">Momentum
+        <input type="radio"name="showHide" id="showVelocity" onclick="showDiv('velocityDiv')">Velocity
+    </div>
+
+    <div id="accelerationDiv" class="hidden">
+        <iframe src="Acceleration.html" width="80%" height="400"></iframe>
+    </div>
+
+    <div id="displacementDiv" class="hidden">
+        <iframe src="Displacement.html" width="80%" height="400"></iframe>
+    </div>
+
+    <div id="momentumDiv" class="hidden">
+        <iframe src="Momentum.html" width="80%" height="400"></iframe>
+    </div>
+
+    <div id="velocityDiv" class="hidden">
+        <iframe src="Velocity.html" width="80%" height="400"></iframe>
+    </div>
+
+    <script>
+        function showDiv(divId) {
+            document.getElementById(divId).style.display = 'block';
+            hideOtherDivs(divId);
+        }
+
+        function hideOtherDivs(currentDivId) {
+            const divIds = ['accelerationDiv', 'displacementDiv', 'momentumDiv', 'velocityDiv'];
+            for (const id of divIds) {
+                if (id !== currentDivId) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

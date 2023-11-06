@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haskulator: Momentum</title>
+</head>
+<body>
+    <h1>Haskulator: Momentum</h1>
+
+    <label for="mass">Mass (kg):</label>
+    <input type="number" id="mass">
+
+    <label for="velocity">Velocity (m/s):</label>
+    <input type="number" id="velocity">
+
+    <button onclick="calculateMomentum()">Calculate Momentum</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateMomentum() {
+            const mass = parseFloat(document.getElementById("mass").value);
+            const velocity = parseFloat(document.getElementById("velocity").value);
+
+            const momentum = mass * velocity;
+
+            if (!isNaN(momentum)) {
+                document.getElementById("result").innerHTML = `Momentum: ${momentum.toFixed(2)} kg·m/s`;
+            } else {
+                document.getElementById("result").innerHTML = "Please provide valid input values.";
+            }
+        }
+    </script>
+</body>
+</html>
