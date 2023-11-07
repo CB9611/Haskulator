@@ -1,0 +1,78 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(158, 158, 158);
+}
+
+.title-bar {
+    width: auto;
+    height: auto;
+    background: linear-gradient(to bottom, #19005e, #2c00a7);
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: auto;
+    padding-bottom: auto;
+    border-bottom: 3px solid black;
+}
+
+.title-container {
+    width: 500px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #19005e, #2c00a7);
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 15px;
+    color: whitesmoke;
+}
+
+.choose-div {
+    width: 300px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    border-bottom: 3px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.title-div {
+    text-align: center;
+    justify-content: center;
+}
+
+.choose-div {
+    text-align: center;
+    justify-content: center;
+}
+
+.options-selector {
+    text-align: center;
+    justify-content: center;
+}
+
+.option {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.hidden {
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.file-show {
+    border: 3px solid black;
+    border-radius: 25px;
+    width: auto;
+    padding: 25px;
+}

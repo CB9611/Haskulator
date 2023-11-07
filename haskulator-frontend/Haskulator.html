@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Haskulator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         .hidden {
             display: none;
@@ -9,29 +10,33 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Haskulator</h1>
-    <h3>Please choose a calculation:</h3>
-    <div id="optionsDiv">
-        <input type="radio"name="showHide" id="showAcceleration" onclick="showDiv('accelerationDiv')">Acceleration
-        <input type="radio"name="showHide" id="showDisplacement" onclick="showDiv('displacementDiv')">Displacement
-        <input type="radio"name="showHide" id="showMomentum" onclick="showDiv('momentumDiv')">Momentum
-        <input type="radio"name="showHide" id="showVelocity" onclick="showDiv('velocityDiv')">Velocity
+    <div class="title-bar">
+        <h1 class="title-container">Welcome to Haskulator</h1>
+    </div>
+    <div class="choose-container">
+        <h3 class="choose-div">Please choose a calculation:</h3>
+    </div>
+    <div id="optionsDiv" class="options-selector">
+        <input type="radio"name="showHide" id="showAcceleration"class="option" onclick="showDiv('accelerationDiv')">Acceleration
+        <input type="radio"name="showHide" id="showDisplacement"class="option" onclick="showDiv('displacementDiv')">Displacement
+        <input type="radio"name="showHide" id="showMomentum"class="option" onclick="showDiv('momentumDiv')">Momentum
+        <input type="radio"name="showHide" id="showVelocity"class="option" onclick="showDiv('velocityDiv')">Velocity
     </div>
 
     <div id="accelerationDiv" class="hidden">
-        <iframe src="Acceleration.html" width="80%" height="400"></iframe>
+        <iframe src="Acceleration.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
     <div id="displacementDiv" class="hidden">
-        <iframe src="Displacement.html" width="80%" height="400"></iframe>
+        <iframe src="Displacement.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
     <div id="momentumDiv" class="hidden">
-        <iframe src="Momentum.html" width="80%" height="400"></iframe>
+        <iframe src="Momentum.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
     <div id="velocityDiv" class="hidden">
-        <iframe src="Velocity.html" width="80%" height="400"></iframe>
+        <iframe src="Velocity.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
     <script>
