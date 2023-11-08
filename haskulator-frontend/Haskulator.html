@@ -17,25 +17,22 @@
         <h3 class="choose-div">Please choose a calculation:</h3>
     </div>
     <div id="optionsDiv" class="options-selector">
-        <input type="radio"name="showHide" id="showAcceleration"class="option" onclick="showDiv('accelerationDiv')">Acceleration
-        <input type="radio"name="showHide" id="showDisplacement"class="option" onclick="showDiv('displacementDiv')">Displacement
-        <input type="radio"name="showHide" id="showMomentum"class="option" onclick="showDiv('momentumDiv')">Momentum
-        <input type="radio"name="showHide" id="showVelocity"class="option" onclick="showDiv('velocityDiv')">Velocity
+
     </div>
 
-    <div id="accelerationDiv" class="hidden">
+    <div id="Acceleration" class="hidden">
         <iframe src="Acceleration.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
-    <div id="displacementDiv" class="hidden">
+    <div id="Displacement" class="hidden">
         <iframe src="Displacement.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
-    <div id="momentumDiv" class="hidden">
+    <div id="Momentum" class="hidden">
         <iframe src="Momentum.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
-    <div id="velocityDiv" class="hidden">
+    <div id="Velocity" class="hidden">
         <iframe src="Velocity.html" width="80%" height="400" class="file-show"></iframe>
     </div>
 
@@ -44,15 +41,61 @@
             document.getElementById(divId).style.display = 'block';
             hideOtherDivs(divId);
         }
-
+        
         function hideOtherDivs(currentDivId) {
-            const divIds = ['accelerationDiv', 'displacementDiv', 'momentumDiv', 'velocityDiv'];
+            const divIds = ['Acceleration', 'Displacement', 'Momentum', 'Velocity'];
             for (const id of divIds) {
                 if (id !== currentDivId) {
                     document.getElementById(id).style.display = 'none';
                 }
             }
         }
+        // Load available problem categories from the server.
+    fetch("http://localhost:3000/categories")
+      .then(response => response.json())
+      .then(data => {
+        const optionDiv = document.getElementById("optionDiv");
+
+        data.forEach(category => {
+          const radioBtn = document.createElement("input");
+          radioBtn.type = "radio";
+          radioBtn.name = "btn"
+          radioBtn.value = category.categoryName;
+          radioBtn.textContent = category.categoryName;
+          radioBtn.onclick = () =>{
+            showDiv(category.categoryName)
+          };
+          const label = document.createElement("label");
+          label.appendChild(radioBtn);
+          label.appendChild(document.createTextNode(category.categoryName));
+
+          optionsDiv.appendChild(label);
+        });
+
+}) 
+.catch(error => console.error("Error:", error));
+async function calculatePhysics(category, data) {
+    try {
+        const response = await fetch(`http://localhost:3000/${category}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+          
+            updateResultInHTML(result);
+        } else {
+            console.error('Calculation failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
     </script>
 </body>
 </html>
