@@ -197,9 +197,14 @@
             radioBtn.onclick = () =>{
                 showDiv(category.categoryName)
             };
+            // Add class for CSS
+            radioBtn.classList.add("radioButton");
+            
             const label = document.createElement("label");
             label.appendChild(radioBtn);
             label.appendChild(document.createTextNode(category.categoryName));
+            // Add class for CSS
+            label.classList.add("radioButtonText");
 
             optionsDiv.appendChild(label);
             });
