@@ -22,23 +22,55 @@ physicsCategories =
   , PhysicsCategory "Momentum"
   , PhysicsCategory "Velocity"
   ]
+data TotalDisplacementProblem = TotalDisplacementProblem Double Double Double
+    deriving(Show)
 
-
-data DisplacementProblem = DisplacementProblem Double Double Double
+data DisplacementProblem = DisplacementProblem Double Double 
     deriving (Show)
 
+data MomentumProblem = MomentumProblem Double Double
+    deriving(Show)
+
+instance FromJSON MomentumProblem where
+    parseJSON (Object v) = MomentumProblem
+        <$> v .: "mass"
+        <*> v .: "velocity"
+
+instance FromJSON TotalDisplacementProblem where
+    parseJSON (Object v) = TotalDisplacementProblem
+        <$> v .: "initialVelocity"
+        <*> v .: "acceleration"
+        <*> v .: "time"
+        
 instance FromJSON DisplacementProblem where
     parseJSON (Object v) = DisplacementProblem
-        <$> v .: "initialVelocity"
-        <*> v .: "angle"
-        <*> v .: "acceleration"
+        <$> v .: "initialPosition"
+        <*> v .: "finalPosition"
+  
+instance ToJSON MomentumProblem where
+    toJSON (MomentumProblem m v) =
+      object [ "mass" .= m
+      , "velocity" .= v]
 
-
-instance ToJSON DisplacementProblem where
-    toJSON (DisplacementProblem v0 angle a) =
+instance ToJSON TotalDisplacementProblem where
+    toJSON (TotalDisplacementProblem v0 a t) =
       object [ "initialVelocity" .= v0
-        , "angle" .= angle
-        , "acceleration" .= a]
+        , "acceleration" .= a
+        , "time" .= t]
+instance ToJSON DisplacementProblem where
+    toJSON (DisplacementProblem u f) =
+      object [ "initialPosition" .= u
+        , "finalPosition" .= f]
+
+calculateMomentum :: MomentumProblem -> Double 
+calculateMomentum (MomentumProblem mass velocity) = mass * velocity
+
+calculateTotalDisplacement :: TotalDisplacementProblem -> Double 
+calculateTotalDisplacement  (TotalDisplacementProblem initialVelocity acceleration time) =
+  initialVelocity * time + 0.5 * acceleration * time^2
+
+calculateDisplacementWithoutVelocityOrAcceleration :: Double -> Double -> Double 
+calculateDisplacementWithoutVelocityOrAcceleration f u = f- u
 main :: IO ()
 main = scotty 3000 $ do
 
@@ -49,6 +81,18 @@ main = scotty 3000 $ do
   
   post "/calculate/:category" $ do
     categoryParam <- param "category" :: ActionM Text
-    mydata <- jsonData :: ActionM DisplacementProblem
-    Web.Scotty.json mydata
+    
+   
+    case categoryParam of
+        "Displacement" -> do
+            mydata <- jsonData :: ActionM TotalDisplacementProblem
+            let totalDisplacement = calculateTotalDisplacement mydata
+            Web.Scotty.json totalDisplacement
+        "Momentum" -> do
+            mydata <- jsonData :: ActionM MomentumProblem
+            let momentum = calculateMomentum mydata
+            Web.Scotty.json momentum
+      
+
+
 
