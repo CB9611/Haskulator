@@ -9,6 +9,10 @@
         }
     </style>
 </head>
+
+<!--Start of HTML-->
+<!--Ignore <ul> <li> <div> tags, those are for formatting only-->
+<!--<form> <label> <input> are the important tags-->
 <body>
     <div class="title-bar">
         <h1 class="title-container">Welcome to Haskulator</h1>
@@ -16,23 +20,43 @@
     <div class="choose-container">
         <h3 class="choose-div">Please choose a calculation:</h3>
     </div>
-    <div id="optionsDiv" class="options-selector">
+    <div id="optionsDiv" class="options-selector"></div>
 
-    </div>
-
+    <!--Acceleration HTML-->
     <div id="Acceleration" class="hidden">
         <h2>Acceleration</h2>
         <form id="acceleration-form">
-            <label for="initialVelocity">Initial Velocity: </label>
-            <input type="number" id="initialVelocity" step="0.01" required>
-
-            <label for="finalVelocity">Final Velocity: </label>
-            <input type="number" id="finalVelocity" step="0.01" required>
-
-            <label for="time">Time: </label>
-            <input type="number" id="time" step="0.01" required>
-
-            <button type="button" id="calculateAcceleration">Calculate Acceleration</button>
+            <ul>
+                <li>
+                    <div class="inputTitle">
+                        <label for="initialVelocity">Initial Velocity: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="initialVelocity" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="finalVelocity">Final Velocity: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="finalVelocity" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="time">Time: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="timey" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <button type="button" id="calculateAcceleration" class="submitBtn">Calculate Acceleration</button>
+                    </div>
+                </li>
+            </ul>
         </form>
         <div id="accelerationResult">
             <h3>Result: </h3>
@@ -40,16 +64,33 @@
         </div>
     </div>
 
+    <!--Displacement HTML-->
     <div id="Displacement" class="hidden">
         <h2>Displacement</h2>
         <form id="displacement-form">
-            <label for="initialPosition">Initial Position: </label>
-            <input type="number" id="initialPosition" step="0.01" required>
-
-            <label for="finalPosition">Final Position: </label>
-            <input type="number" id="finalPosition" step="0.01" required>
-
-            <button type="button" id="calculateDisplacement">Calculate Displacement</button>
+            <ul>
+                <li>
+                    <div class="inputTitle">
+                        <label for="initialPosition">Initial Position: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="initialPosition" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="finalPosition">Final Position: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="finalPosition" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <button type="button" id="calculateDisplacement" class="submitBtn">Calculate Displacement</button>
+                    </div>
+                </li>
+            </ul>
         </form>
         <div id="displacementResult">
             <h3>Result: </h3>
@@ -57,16 +98,33 @@
         </div>
     </div>
 
+    <!--Momentum HTML-->
     <div id="Momentum" class="hidden">
         <h2>Momentum</h2>
         <form id="momentum-form">
-            <label for="mass">Mass: </label>
-            <input type="number" id="mass" step="0.01" required>
-
-            <label for="velocity">Velocity: </label>
-            <input type="number" id="velocity" step="0.01" required>
-
-            <button type="button" id="calculateMomentum">Calculate Momentum</button>
+            <ul>
+                <li>
+                    <div class="inputTitle">
+                        <label for="mass">Mass: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="mass" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="velocity">Velocity: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="velocity" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <button type="button" id="calculateMomentum" class="submitBtn">Calculate Momentum</button>
+                    </div>
+                </li>
+            </ul>
         </form>
         <div id="momentumResult">
             <h3>Result: </h3>
@@ -74,22 +132,41 @@
         </div>
     </div>
 
+    <!--Velocity HTML-->
     <div id="Velocity" class="hidden">
         <h2>Velocity</h2>
         <form id="velocity-form">
-            <label for="displacement">Displacement (m): </label>
-            <input type="number" id="displacement" step="0.01" required>
-
-            <label for="timeVelocity">Time: </label>
-            <input type="number" id="timeVelocity" step="0.01" required>
-
-            <button type="button" id="calculateVelocity">Calculate Velocity</button>
+            <ul>
+                <li>
+                    <div class="inputTitle">
+                        <label for="displacement">Displacement (m): </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="displacement" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="timeVelocity">Time: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="timeVelocity" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <button type="button" id="calculateVelocity" class="submitBtn">Calculate Velocity</button>
+                    </div>
+                </li>
+            </ul>
         </form>
         <div id="velocityResult">
             <h3>Result: </h3>
             <p id="resultValue"></p>
         </div>
     </div>
+
+    <!--End of HTML, Start of Javascript-->
 
     <script>
         function showDiv(divId) {
@@ -120,9 +197,14 @@
             radioBtn.onclick = () =>{
                 showDiv(category.categoryName)
             };
+            // Add class for CSS
+            radioBtn.classList.add("radioButton");
+            
             const label = document.createElement("label");
             label.appendChild(radioBtn);
             label.appendChild(document.createTextNode(category.categoryName));
+            // Add class for CSS
+            label.classList.add("radioButtonText");
 
             optionsDiv.appendChild(label);
             });
@@ -222,5 +304,7 @@
             }
         });
     </script>
+
+    <!--End of Javascript-->
 </body>
 </html>
