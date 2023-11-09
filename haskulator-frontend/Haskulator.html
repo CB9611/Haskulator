@@ -21,19 +21,74 @@
     </div>
 
     <div id="Acceleration" class="hidden">
-        <iframe src="Acceleration.html" width="80%" height="400" class="file-show"></iframe>
+        <h2>Acceleration</h2>
+        <form id="acceleration-form">
+            <label for="initialVelocity">Initial Velocity: </label>
+            <input type="number" id="initialVelocity" step="0.01" required>
+
+            <label for="finalVelocity">Final Velocity: </label>
+            <input type="number" id="finalVelocity" step="0.01" required>
+
+            <label for="time">Time: </label>
+            <input type="number" id="timey" step="0.01" required>
+
+            <button type="button" id="calculateAcceleration">Calculate Acceleration</button>
+        </form>
+        <div id="accelerationResult">
+            <h3>Result: </h3>
+            <p id="resultValue"></p>
+        </div>
     </div>
 
     <div id="Displacement" class="hidden">
-        <iframe src="Displacement.html" width="80%" height="400" class="file-show"></iframe>
+        <h2>Displacement</h2>
+        <form id="displacement-form">
+            <label for="initialPosition">Initial Position: </label>
+            <input type="number" id="initialPosition" step="0.01" required>
+
+            <label for="finalPosition">Final Position: </label>
+            <input type="number" id="finalPosition" step="0.01" required>
+
+            <button type="button" id="calculateDisplacement">Calculate Displacement</button>
+        </form>
+        <div id="displacementResult">
+            <h3>Result: </h3>
+            <p id="resultValue"></p>
+        </div>
     </div>
 
     <div id="Momentum" class="hidden">
-        <iframe src="Momentum.html" width="80%" height="400" class="file-show"></iframe>
+        <h2>Momentum</h2>
+        <form id="momentum-form">
+            <label for="mass">Mass: </label>
+            <input type="number" id="mass" step="0.01" required>
+
+            <label for="velocity">Velocity: </label>
+            <input type="number" id="velocity" step="0.01" required>
+
+            <button type="button" id="calculateMomentum">Calculate Momentum</button>
+        </form>
+        <div id="momentumResult">
+            <h3>Result: </h3>
+            <p id="resultValue"></p>
+        </div>
     </div>
 
     <div id="Velocity" class="hidden">
-        <iframe src="Velocity.html" width="80%" height="400" class="file-show"></iframe>
+        <h2>Velocity</h2>
+        <form id="velocity-form">
+            <label for="displacement">Displacement (m): </label>
+            <input type="number" id="displacement" step="0.01" required>
+
+            <label for="timeVelocity">Time: </label>
+            <input type="number" id="timeVelocity" step="0.01" required>
+
+            <button type="button" id="calculateVelocity">Calculate Velocity</button>
+        </form>
+        <div id="velocityResult">
+            <h3>Result: </h3>
+            <p id="resultValue"></p>
+        </div>
     </div>
 
     <script>
@@ -51,51 +106,124 @@
             }
         }
         // Load available problem categories from the server.
-    fetch("http://localhost:3000/categories")
-      .then(response => response.json())
-      .then(data => {
-        const optionDiv = document.getElementById("optionDiv");
+        fetch("http://localhost:3000/categories")
+        .then(response => response.json())
+        .then(data => {
+            const optionDiv = document.getElementById("optionDiv");
 
-        data.forEach(category => {
-          const radioBtn = document.createElement("input");
-          radioBtn.type = "radio";
-          radioBtn.name = "btn"
-          radioBtn.value = category.categoryName;
-          radioBtn.textContent = category.categoryName;
-          radioBtn.onclick = () =>{
-            showDiv(category.categoryName)
-          };
-          const label = document.createElement("label");
-          label.appendChild(radioBtn);
-          label.appendChild(document.createTextNode(category.categoryName));
+            data.forEach(category => {
+            const radioBtn = document.createElement("input");
+            radioBtn.type = "radio";
+            radioBtn.name = "btn"
+            radioBtn.value = category.categoryName;
+            radioBtn.textContent = category.categoryName;
+            radioBtn.onclick = () =>{
+                showDiv(category.categoryName)
+            };
+            const label = document.createElement("label");
+            label.appendChild(radioBtn);
+            label.appendChild(document.createTextNode(category.categoryName));
 
-          optionsDiv.appendChild(label);
-        });
+            optionsDiv.appendChild(label);
+            });
 
-}) 
-.catch(error => console.error("Error:", error));
-async function calculatePhysics(category, data) {
-    try {
-        const response = await fetch(`http://localhost:3000/${category}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
+         })
+        .catch(error => console.error("Error:", error));
+        async function calculatePhysics(category, data) {
+            try {
+                const response = await fetch(`http://localhost:3000/${category}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
-        if (response.ok) {
-            const result = await response.json();
-          
-            updateResultInHTML(result);
-        } else {
-            console.error('Calculation failed:', response.statusText);
+                if (response.ok) {
+                    const result = await response.json();
+                
+                    updateResultInHTML(result);
+                } else {
+                    console.error('Calculation failed:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
+        // Acceleration Event Listener
+        document.getElementById("calculateAcceleration").addEventListener("click", function() {
+            const initialVelocity = parseFloat(document.getElementById("initialVelocity").value);
+            const finalVelocity = parseFloat(document.getElementById("finalVelocity").value);
+            const time = parseFloat(document.getElementById("time").value);
+
+            if (!isNaN(initialVelocity) && !isNaN(finalVelocity) && !isNaN(time)) {
+                const data = {
+                    initialVelocity: initialVelocity,
+                    finalVelocity: finalVelocity,
+                    time: time
+                };
+
+                // POST
+                calculatePhysics("Acceleration", data);
+            } else {
+                alert("Please enter valid numbers!")
+            }
+        });
+
+        // Displacement Event Listener
+        document.getElementById("calculateDisplacement").addEventListener("click", function() {
+            const initialPosition = parseFloat(document.getElementById("initialPosition").value);
+            const finalPosition = parseFloat(document.getElementById("finalPosition").value);
+
+            if (!isNaN(initialPosition) && !isNaN(finalPosition)) {
+                const data = {
+                    initialPosition: initialPosition,
+                    finalPosition: finalPosition
+                };
+
+                // POST
+                calculatePhysics("Displacement", data);
+            } else {
+                alert("Please enter valid numbers!")
+            }
+        });
+
+        // Momentum Event Listener
+        document.getElementById("calculateMomentum").addEventListener("click", function() {
+            const mass = parseFloat(document.getElementById("mass").value);
+            const velocity = parseFloat(document.getElementById("velocity").value);
+
+            if (!isNaN(mass) && !isNaN(velocity)) {
+                const data = {
+                    mass: mass,
+                    velocity: velocity
+                };
+
+                // POST
+                calculatePhysics("Momentum", data);
+            } else {
+                alert("Please enter valid numbers!")
+            }
+        });
+
+        // Velocity Event Listener
+        document.getElementById("calculateVelocity").addEventListener("click", function() {
+            const displacement = parseFloat(document.getElementById("displacement").value);
+            const timeVelocity = parseFloat(document.getElementById("timeVelocity").value);
+
+            if (!isNaN(displacement) && !isNaN(timeVelocity)) {
+                const data = {
+                    displacement: displacement,
+                    timeVelocity: timeVelocity
+                };
+
+                // POST
+                calculatePhysics("Velocity", data);
+            } else {
+                alert("Please enter valid numbers!")
+            }
+        });
     </script>
 </body>
 </html>
