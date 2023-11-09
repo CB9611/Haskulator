@@ -31,6 +31,24 @@ data DisplacementProblem = DisplacementProblem Double Double
 data MomentumProblem = MomentumProblem Double Double
     deriving(Show)
 
+data AccelerationProblem = AccelerationProblem Double Double Double
+    deriving(Show)
+
+data VelocityProblem = VelocityProblem Double Double Double
+    deriving(Show) 
+
+instance FromJSON VelocityProblem where
+    parseJSON (Object v) = VelocityProblem
+        <$> v .: "initialPosition"
+        <*> v .: "finalPosition"
+        <*> v .: "time"
+
+instance FromJSON AccelerationProblem where
+    parseJSON (Object v) = AccelerationProblem
+        <$> v .: "initialVelocity"   
+        <*> v .: "finalVelocity"
+        <*> v .: "time" 
+
 instance FromJSON MomentumProblem where
     parseJSON (Object v) = MomentumProblem
         <$> v .: "mass"
@@ -47,6 +65,18 @@ instance FromJSON DisplacementProblem where
         <$> v .: "initialPosition"
         <*> v .: "finalPosition"
   
+instance ToJSON VelocityProblem where 
+    toJSON (VelocityProblem p0 pf t) =
+      object [ "initialPosition" .= p0
+      , "finalPosition" .= pf
+      , "time" .= t]    
+
+instance ToJSON AccelerationProblem where
+    toJSON (AccelerationProblem v0 vf t) =
+      object [ "initialVelocity" .= v0
+      , "finalVelocity" .= vf
+      , "time" .= t]  
+
 instance ToJSON MomentumProblem where
     toJSON (MomentumProblem m v) =
       object [ "mass" .= m
@@ -62,6 +92,12 @@ instance ToJSON DisplacementProblem where
       object [ "initialPosition" .= u
         , "finalPosition" .= f]
 
+calculateVelocity :: VelocityProblem -> Double
+calculateVelocity (VelocityProblem initialPosition finalPosition time) = calculateDisplacementWithoutVelocityOrAcceleration finalPosition initialPosition / time 
+
+calculateAcceleration :: AccelerationProblem -> Double 
+calculateAcceleration (AccelerationProblem initialVelocity finalVelocity time) = (finalVelocity - initialVelocity) / time
+
 calculateMomentum :: MomentumProblem -> Double 
 calculateMomentum (MomentumProblem mass velocity) = mass * velocity
 
@@ -70,7 +106,8 @@ calculateTotalDisplacement  (TotalDisplacementProblem initialVelocity accelerati
   initialVelocity * time + 0.5 * acceleration * time^2
 
 calculateDisplacementWithoutVelocityOrAcceleration :: Double -> Double -> Double 
-calculateDisplacementWithoutVelocityOrAcceleration f u = f- u
+calculateDisplacementWithoutVelocityOrAcceleration finalPosition initialPosition = finalPosition - initialPosition
+
 main :: IO ()
 main = scotty 3000 $ do
 
@@ -92,7 +129,13 @@ main = scotty 3000 $ do
             mydata <- jsonData :: ActionM MomentumProblem
             let momentum = calculateMomentum mydata
             Web.Scotty.json momentum
-      
-
+        "Acceleration" -> do
+            mydata <- jsonData :: ActionM AccelerationProblem
+            let acceleration = calculateAcceleration mydata
+            Web.Scotty.json acceleration
+        "Velocity" -> do
+            mydata <- jsonData :: ActionM VelocityProblem
+            let velocity = calculateVelocity mydata
+            Web.Scotty.json velocity
 
 
