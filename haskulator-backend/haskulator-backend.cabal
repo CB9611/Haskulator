@@ -40,6 +40,7 @@ library
 executable haskulator-backend-exe
   main-is: Main.hs
   other-modules:
+      PhysicsCalc
       Paths_haskulator_backend
   autogen-modules:
       Paths_haskulator_backend
