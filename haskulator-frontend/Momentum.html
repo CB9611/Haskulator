@@ -13,7 +13,7 @@
     <label for="velocity">Velocity (m/s):</label>
     <input type="number" id="velocity">
 
-    <button onclick="calculateMomentum()">Calculate Momentum</button>
+    <button type="button" onclick="calculateMomentum()">Calculate Momentum</button>
 
     <p id="result"></p>
 
@@ -25,7 +25,8 @@
             const momentum = mass * velocity;
 
             if (!isNaN(momentum)) {
-                document.getElementById("result").innerHTML = `Momentum: ${momentum.toFixed(2)} kg·m/s`;
+                const resultElement = document.getElementById("result");
+                resultElement.innerHTML = `Momentum: ${momentum.toFixed(2)} kg·m/s`;
             } else {
                 document.getElementById("result").innerHTML = "Please provide valid input values.";
             }

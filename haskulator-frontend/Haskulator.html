@@ -99,13 +99,14 @@
     </div>
 
     <!--Momentum HTML-->
-    <div id="Momentum" class="hidden">
-        <h2>Momentum</h2>
+    <id id="Momentum" class="hidden">
+        <h1>Momentum</h1>
+        <br></br>
         <form id="momentum-form">
             <ul>
                 <li>
                     <div class="inputTitle">
-                        <label for="mass">Mass: </label>
+                        <label for="mass">Mass (kilograms): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="mass" step="0.01" required class="inputBox">
@@ -113,7 +114,7 @@
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="velocity">Velocity: </label>
+                        <label for="velocity">Velocity (meters/second): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="velocity" step="0.01" required class="inputBox">
@@ -126,6 +127,7 @@
                 </li>
             </ul>
         </form>
+        <br></br>
         <div id="momentumResult">
             <h3>Result: </h3>
             <p id="resultValue"></p>
