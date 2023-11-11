@@ -119,6 +119,7 @@ li {
     font-size: medium;
     font-weight: bold;
     border: #0000001f solid;
+    cursor: pointer;
 }
 
 .submitBtn:hover {
