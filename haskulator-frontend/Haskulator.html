@@ -81,7 +81,7 @@
                         </li>
                         <li>
                             <div class="inputTitle">
-                                <label for="acc">Acceleration (meters/second^2): </label>
+                                <label for="acc">Acceleration (meters/second²): </label>
                             </div>
                             <div class="inputText">
                                 <input type="number" id="acc" step="0.01" required class="inputBox">
@@ -177,7 +177,7 @@
                 </ul>
             </form>
             <div id="velocityResult">
-                <h3 id="resultValue"> </h3>
+                <h3 id="resultValue"></h3>
             </div>
         </div>  
 
@@ -238,9 +238,25 @@
                 if (response.ok) {
                     const result = await response.json();
                     const resultElement = document.getElementById(`${category.toLowerCase()}Result`);
-                 
-                    resultElement.querySelector('#resultValue').textContent = `Result: ${result}`;
-                   console.log(result);
+                    switch (category) {
+                        case 'Acceleration':
+                            unit = ' m/s²';
+                            break;
+                        case 'Displacement':
+                            unit = ' meters';
+                            break;
+                        case 'Momentum':
+                            unit = ' kg*m/s';
+                            break;
+                        case 'Velocity':
+                            unit = ' m/s';
+                            break;
+                        default:
+                            unit = '';
+                    }
+
+                    resultElement.querySelector('#resultValue').textContent = `Result: ${result}${unit}`
+                    console.log(result);
                 } else {
                     console.error('Calculation failed:', response.statusText);
                 }
