@@ -59,8 +59,7 @@
             </ul>
         </form>
         <div id="accelerationResult">
-            <h3>Result: </h3>
-            <p id="resultValue"></p>
+            <h3 id="resultValue"> </h3>
         </div>
     </div>
 
@@ -71,18 +70,26 @@
             <ul>
                 <li>
                     <div class="inputTitle">
-                        <label for="initialPosition">Initial Position: </label>
+                        <label for="inv">Initial Velocity: </label>
                     </div>
                     <div class="inputText">
-                        <input type="number" id="initialPosition" step="0.01" required class="inputBox">
+                        <input type="number" id="inv" step="0.01" required class="inputBox">
                     </div>
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="finalPosition">Final Position: </label>
+                        <label for="acc">Acceleration: </label>
                     </div>
                     <div class="inputText">
-                        <input type="number" id="finalPosition" step="0.01" required class="inputBox">
+                        <input type="number" id="acc" step="0.01" required class="inputBox">
+                    </div>
+                </li>
+                <li>
+                    <div class="inputTitle">
+                        <label for="t">Time: </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="t" step="0.01" required class="inputBox">
                     </div>
                 </li>
                 <li>
@@ -93,8 +100,7 @@
             </ul>
         </form>
         <div id="displacementResult">
-            <h3>Result: </h3>
-            <p id="resultValue"></p>
+            <h3 id="resultValue"> </h3>
         </div>
     </div>
 
@@ -129,8 +135,7 @@
         </form>
         <br></br>
         <div id="momentumResult">
-            <h3>Result: </h3>
-            <p id="resultValue"></p>
+            <h3 id="resultValue"> </h3>
         </div>
     </div>
 
@@ -141,20 +146,27 @@
             <ul>
                 <li>
                     <div class="inputTitle">
-                        <label for="displacement">Displacement (m): </label>
+                        <label for="inpos">Initial Position (m): </label>
                     </div>
                     <div class="inputText">
-                        <input type="number" id="displacement" step="0.01" required class="inputBox">
+                        <input type="number" id="inpos" step="0.01" required class="inputBox">
                     </div>
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="timeVelocity">Time: </label>
+                        <label for="finalpo">Final Position: </label>
                     </div>
                     <div class="inputText">
-                        <input type="number" id="timeVelocity" step="0.01" required class="inputBox">
+                        <input type="number" id="finalpo" step="0.01" required class="inputBox">
                     </div>
                 </li>
+                <li>
+                <div class="inputTitle">
+                    <label for="ti">Time: </label>
+                </div>
+                <div class="inputText">
+                    <input type="number" id="ti" step="0.01" required class="inputBox">
+                </div></li>
                 <li>
                     <div>
                         <button type="button" id="calculateVelocity" class="submitBtn">Calculate Velocity</button>
@@ -163,8 +175,7 @@
             </ul>
         </form>
         <div id="velocityResult">
-            <h3>Result: </h3>
-            <p id="resultValue"></p>
+            <h3 id="resultValue"> </h3>
         </div>
     </div>
 
@@ -222,7 +233,9 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                
+                    const resultElement = document.getElementById(`${category.toLowerCase()}Result`);
+                 
+                    resultElement.querySelector('#resultValue').textContent = `Reslut: ${result}`;
                    console.log(result);
                 } else {
                     console.error('Calculation failed:', response.statusText);
@@ -237,7 +250,7 @@
             const initialVelocity = parseFloat(document.getElementById("initialVelocity").value);
             const finalVelocity = parseFloat(document.getElementById("finalVelocity").value);
             const time = parseFloat(document.getElementById("time").value);
-
+ 
             if (!isNaN(initialVelocity) && !isNaN(finalVelocity) && !isNaN(time)) {
                 const data = {
                     initialVelocity: initialVelocity,
@@ -254,13 +267,14 @@
 
         // Displacement Event Listener
         document.getElementById("calculateDisplacement").addEventListener("click", function() {
-            const initialPosition = parseFloat(document.getElementById("initialPosition").value);
-            const finalPosition = parseFloat(document.getElementById("finalPosition").value);
-
-            if (!isNaN(initialPosition) && !isNaN(finalPosition)) {
+            const initialVelocity= parseFloat(document.getElementById("inv").value);
+            const acceleration = parseFloat(document.getElementById("acc").value);
+            const time = parseFloat(document.getElementById("t").value);
+            if (!isNaN(initialVelocity) && !isNaN(acceleration) && !isNaN(time)) {
                 const data = {
-                    initialPosition: initialPosition,
-                    finalPosition: finalPosition
+                    initialVelocity: initialVelocity,
+                    acceleration: acceleration,
+                    time: time
                 };
 
                 // POST
@@ -290,13 +304,15 @@
 
         // Velocity Event Listener
         document.getElementById("calculateVelocity").addEventListener("click", function() {
-            const displacement = parseFloat(document.getElementById("displacement").value);
-            const timeVelocity = parseFloat(document.getElementById("timeVelocity").value);
-
-            if (!isNaN(displacement) && !isNaN(timeVelocity)) {
+            const initialPosition = parseFloat(document.getElementById("inpos").value);
+            const finalPosition = parseFloat(document.getElementById("finalpo").value);
+            const time = parseFloat(document.getElementById("ti").value);
+            if (!isNaN(initialPosition) && !isNaN(finalPosition) && !isNaN(time)) {
                 const data = {
-                    displacement: displacement,
-                    timeVelocity: timeVelocity
+                    initialPosition: initialPosition,
+                    finalPosition: finalPosition,
+                    time: time
+
                 };
 
                 // POST
