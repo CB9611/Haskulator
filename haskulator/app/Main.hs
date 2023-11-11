@@ -18,7 +18,6 @@ physicsCategories :: [PhysicsCategory]
 physicsCategories =
   [ PhysicsCategory "Displacement"
   , PhysicsCategory "Acceleration"
-  , PhysicsCategory "Projectile"
   , PhysicsCategory "Momentum"
   , PhysicsCategory "Velocity"
   ]
