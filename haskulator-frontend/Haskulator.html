@@ -24,12 +24,12 @@
 
     <!--Acceleration HTML-->
     <div id="Acceleration" class="hidden">
-        <h2>Acceleration</h2>
+        <h1 class="functionTitles">Acceleration</h1>
         <form id="acceleration-form">
-            <ul>
+            <ul >
                 <li>
                     <div class="inputTitle">
-                        <label for="initialVelocity">Initial Velocity: </label>
+                        <label for="initialVelocity">Initial Velocity (meters/second): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="initialVelocity" step="0.01" required class="inputBox">
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="finalVelocity">Final Velocity: </label>
+                        <label for="finalVelocity">Final Velocity (meters/second): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="finalVelocity" step="0.01" required class="inputBox">
@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="time">Time: </label>
+                        <label for="time">Time (seconds): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="time" step="0.01" required class="inputBox">
@@ -65,12 +65,12 @@
 
     <!--Displacement HTML-->
     <div id="Displacement" class="hidden">
-        <h2>Displacement</h2>
+        <h1 class="functionTitles">Displacement</h1>
         <form id="displacement-form">
             <ul>
                 <li>
                     <div class="inputTitle">
-                        <label for="inv">Initial Velocity: </label>
+                        <label for="inv">Initial Velocity (meters/second): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="inv" step="0.01" required class="inputBox">
@@ -78,7 +78,7 @@
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="acc">Acceleration: </label>
+                        <label for="acc">Acceleration (meters/second^2): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="acc" step="0.01" required class="inputBox">
@@ -86,7 +86,7 @@
                 </li>
                 <li>
                     <div class="inputTitle">
-                        <label for="t">Time: </label>
+                        <label for="t">Time (seconds): </label>
                     </div>
                     <div class="inputText">
                         <input type="number" id="t" step="0.01" required class="inputBox">
@@ -99,15 +99,14 @@
                 </li>
             </ul>
         </form>
-        <div id="displacementResult">
+        <div id="displacementResult" >
             <h3 id="resultValue"> </h3>
         </div>
     </div>
 
     <!--Momentum HTML-->
     <id id="Momentum" class="hidden">
-        <h1>Momentum</h1>
-        <br></br>
+        <h1 class="functionTitles">Momentum</h1>
         <form id="momentum-form">
             <ul>
                 <li>
@@ -235,7 +234,7 @@
                     const result = await response.json();
                     const resultElement = document.getElementById(`${category.toLowerCase()}Result`);
                  
-                    resultElement.querySelector('#resultValue').textContent = `Reslut: ${result}`;
+                    resultElement.querySelector('#resultValue').textContent = `Result: ${result}`;
                    console.log(result);
                 } else {
                     console.error('Calculation failed:', response.statusText);

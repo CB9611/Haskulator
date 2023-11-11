@@ -52,12 +52,15 @@
 .choose-div {
     text-align: center;
     justify-content: center;
+    font-style: italic;
+    font-size: larger;
 }
 
 .options-selector {
     text-align: center;
     justify-content: center;
     width: 100%;
+    margin-top: 30px;
 }
 
 .radioButton {
@@ -75,7 +78,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px 10px;
     cursor: pointer;
     border-radius: 8px;
 }
@@ -99,12 +102,15 @@
 }
 
 .submitBtn {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 21px;
+    padding-right: 21px;
     border-radius: 15px;
-    margin: 10px;
+    margin: 30px;
+    background-color: white;
+    font-size: medium;
+    font-weight: bold;
 }
 
 li {
@@ -117,6 +123,7 @@ li {
   .inputTitle {
     width: 50%;
     text-align: right;
+    font-size: larger;
   }
 
   .inputText {
@@ -131,5 +138,10 @@ li {
     padding-right: 12px;
     border-radius: 15px;
     margin: 10px;
+    background-color: white;
+}
+
+.functionTitles{
+    padding-bottom: 20px;
 }
 
