@@ -1,66 +1,32 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(158, 158, 158);
-}
 
-.title-bar {
-    width: auto;
-    height: auto;
-    background: linear-gradient(to bottom, #19005e, #2c00a7);
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: auto;
-    padding-bottom: auto;
-    border-bottom: 3px solid black;
-}
-
-.title-container {
-    width: 500px;
-    text-align: center;
-    justify-content: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.calculator-container {
+    padding: 20px;
+    border-radius: 10px;
     background: linear-gradient(to bottom, #19005e, #2c00a7);
-    height: 35px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 15px;
+    border: #00000069 solid;
+    box-shadow: 20px 16px 9px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
     color: whitesmoke;
 }
 
-.choose-div {
-    width: 300px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 35px;
-    border-bottom: 3px solid black;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-top: 25px;
+.title-bar {
+    margin-bottom: 40px;
 }
 
-.title-div {
-    text-align: center;
-    justify-content: center;
-}
-
-.choose-div {
-    text-align: center;
-    justify-content: center;
-    font-style: italic;
-    font-size: larger;
-}
-
-.options-selector {
-    text-align: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 30px;
+.choose-container{
+    margin-bottom: 40px;
 }
 
 .radioButton {
@@ -72,45 +38,34 @@
 .radioButtonText {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #2c00a7;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     margin: 4px 10px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 15px;
+    border: #00000008 solid;
 }
 
 .radioButtonText:hover {
-    background-color: #19005e;
-    transition: 0.5s;
+    background: black;
+    transition: 0.2s;
+    color: whitesmoke;
+}
+
+.options-selector {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
 }
 
 .hidden {
     text-align: center;
     justify-content: center;
-    margin-top: 50px;
-}
-
-.file-show {
-    border: 3px solid black;
-    border-radius: 25px;
-    width: auto;
-    padding: 25px;
-}
-
-.submitBtn {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 21px;
-    padding-right: 21px;
-    border-radius: 15px;
-    margin: 30px;
-    background-color: white;
-    font-size: medium;
-    font-weight: bold;
+    margin-top: 35px;
 }
 
 li {
@@ -131,17 +86,48 @@ li {
     text-align: left;
   }
 
-.inputBox {
+  .inputBox {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 12px;
     padding-right: 12px;
     border-radius: 15px;
     margin: 10px;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
-.functionTitles{
-    padding-bottom: 20px;
+.functionTitles {
+    color: whitesmoke;
 }
 
+.inputTitle {
+    margin-bottom: 5px;
+}
+
+.inputText {
+    margin-bottom: 15px;
+}
+
+.submitBtn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 21px;
+    padding-right: 21px;
+    border-radius: 15px;
+    margin: 30px;
+    background-color: whitesmoke;
+    font-size: medium;
+    font-weight: bold;
+    border: #0000001f solid;
+}
+
+.submitBtn:hover {
+    background: black;
+    transition: 0.2s;
+    color: whitesmoke;
+}
+
+.resultValue {
+    margin-top: 15px;
+    color: #333;
+}

@@ -14,168 +14,173 @@
 <!--Ignore <ul> <li> <div> tags, those are for formatting only-->
 <!--<form> <label> <input> are the important tags-->
 <body>
-    <div class="title-bar">
-        <h1 class="title-container">Welcome to Haskulator</h1>
-    </div>
-    <div class="choose-container">
-        <h3 class="choose-div">Please choose a calculation:</h3>
-    </div>
-    <div id="optionsDiv" class="options-selector"></div>
 
-    <!--Acceleration HTML-->
-    <div id="Acceleration" class="hidden">
-        <h1 class="functionTitles">Acceleration</h1>
-        <form id="acceleration-form">
-            <ul >
-                <li>
-                    <div class="inputTitle">
-                        <label for="initialVelocity">Initial Velocity (meters/second): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="initialVelocity" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="finalVelocity">Final Velocity (meters/second): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="finalVelocity" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="time">Time (seconds): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="time" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <button type="button" id="calculateAcceleration" class="submitBtn">Calculate Acceleration</button>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <div id="accelerationResult">
-            <h3 id="resultValue"> </h3>
+    <div class="calculator-container">
+        <div class="title-bar">
+            <h1>Welcome to Haskulator!</h1>
+            <h3><i>Your favorite physics calculator.</i></h3>
         </div>
-    </div>
-
-    <!--Displacement HTML-->
-    <div id="Displacement" class="hidden">
-        <h1 class="functionTitles">Displacement</h1>
-        <form id="displacement-form">
-            <ul>
-                <li>
-                    <div class="inputTitle">
-                        <label for="inv">Initial Velocity (meters/second): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="inv" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="acc">Acceleration (meters/second^2): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="acc" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="t">Time (seconds): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="t" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <button type="button" id="calculateDisplacement" class="submitBtn">Calculate Displacement</button>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <div id="displacementResult" >
-            <h3 id="resultValue"> </h3>
+        <div class="choose-container">
+            <h2>Please choose a calculation type below:</h2>
         </div>
-    </div>
+        <div id="optionsDiv" class="options-selector"></div>
 
-    <!--Momentum HTML-->
-    <div id="Momentum" class="hidden">
-        <h1 class="functionTitles">Momentum</h1>
-        <form id="momentum-form">
-            <ul>
-                <li>
-                    <div class="inputTitle">
-                        <label for="mass">Mass (kilograms): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="mass" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="velocity">Velocity (meters/second): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="velocity" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <button type="button" id="calculateMomentum" class="submitBtn">Calculate Momentum</button>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <br></br>
-        <div id="momentumResult">
-            <h3 id="resultValue"> </h3>
+        <!--Acceleration HTML-->
+        <div id="Acceleration" class="hidden">
+            <h1 class="functionTitles">Acceleration</h1>
+            <form id="acceleration-form">
+                <ul >
+                    <li>
+                        <div class="inputTitle">
+                            <label for="initialVelocity">Initial Velocity (meters/second): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="initialVelocity" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="finalVelocity">Final Velocity (meters/second): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="finalVelocity" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="time">Time (seconds): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="time" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <button type="button" id="calculateAcceleration" class="submitBtn">Calculate Acceleration</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <div id="accelerationResult">
+                <h3 id="resultValue"> </h3>
+            </div>
         </div>
-    </div>
 
-    <!--Velocity HTML-->
-    <div id="Velocity" class="hidden">
-        <h2>Velocity</h2>
-        <form id="velocity-form">
-            <ul>
-                <li>
-                    <div class="inputTitle">
-                        <label for="inpos">Initial Position (meters): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="inpos" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                    <div class="inputTitle">
-                        <label for="finalpo">Final Position (meters): </label>
-                    </div>
-                    <div class="inputText">
-                        <input type="number" id="finalpo" step="0.01" required class="inputBox">
-                    </div>
-                </li>
-                <li>
-                <div class="inputTitle">
-                    <label for="ti">Time (seconds): </label>
+        <!--Displacement HTML-->
+             <div id="Displacement" class="hidden">
+                <h1 class="functionTitles">Displacement</h1>
+                <form id="displacement-form">
+                    <ul>
+                        <li>
+                            <div class="inputTitle">
+                                <label for="inv">Initial Velocity (meters/second): </label>
+                            </div>
+                            <div class="inputText">
+                                <input type="number" id="inv" step="0.01" required class="inputBox">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="inputTitle">
+                                <label for="acc">Acceleration (meters/second^2): </label>
+                            </div>
+                            <div class="inputText">
+                                <input type="number" id="acc" step="0.01" required class="inputBox">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="inputTitle">
+                                <label for="t">Time (seconds): </label>
+                            </div>
+                            <div class="inputText">
+                                <input type="number" id="t" step="0.01" required class="inputBox">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <button type="button" id="calculateDisplacement" class="submitBtn">Calculate Displacement</button>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                <div id="displacementResult" >
+                    <h3 id="resultValue"> </h3>
                 </div>
-                <div class="inputText">
-                    <input type="number" id="ti" step="0.01" required class="inputBox">
-                </div></li>
-                <li>
-                    <div>
-                        <button type="button" id="calculateVelocity" class="submitBtn">Calculate Velocity</button>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <div id="velocityResult">
-            <h3 id="resultValue"> </h3>
+            </div>
+
+        <!-- Momentum HTML -->
+        <div id="Momentum" class="hidden">
+            <h1 class="functionTitles">Momentum</h1>
+            <form id="momentum-form">
+                <ul>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="mass">Mass (kilograms): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="mass" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="velocity">Velocity (meters/second): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="velocity" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <button type="button" id="calculateMomentum" class="submitBtn">Calculate Momentum</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <br></br>
+            <div id="momentumResult">
+                <h3 id="resultValue"> </h3>
+            </div>
         </div>
+    
+        <!-- Velocity HTML-->
+         <div id="Velocity" class="hidden">
+            <h1 class="functionTitles">Velocity</h1>
+            <form id="velocity-form">
+                <ul>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="inpos">Initial Position (meters): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="inpos" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inputTitle">
+                            <label for="finalpo">Final Position (meters): </label>
+                        </div>
+                        <div class="inputText">
+                            <input type="number" id="finalpo" step="0.01" required class="inputBox">
+                        </div>
+                    </li>
+                    <li>
+                    <div class="inputTitle">
+                        <label for="ti">Time (seconds): </label>
+                    </div>
+                    <div class="inputText">
+                        <input type="number" id="ti" step="0.01" required class="inputBox">
+                    </div></li>
+                    <li>
+                        <div>
+                            <button type="button" id="calculateVelocity" class="submitBtn">Calculate Velocity</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <div id="velocityResult">
+                <h3 id="resultValue"> </h3>
+            </div>
+        </div>  
+
     </div>
 
     <!--End of HTML, Start of Javascript-->
